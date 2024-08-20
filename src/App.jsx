@@ -2,6 +2,7 @@ import { useState } from "react"
 import Content from "./Components/Content/Content"
 import Footer from "./Components/Footer/Footer"
 import Header from "./Components/Header/Header"
+import AddItem from "./Components/AddItem/AddItem"
 
 function App() {
   const [items,setItems] = useState([
@@ -21,6 +22,14 @@ function App() {
         item :"Item 03"
     },
 ])
+const [newItem,setNewItem] = useState('')
+const addItem = (item)=>{
+  const id = items.length ? items[items.length -1].id+1:1;
+  const myNewItem={id,checked:false,item}
+  const listItem =[...items,myNewItem]
+  setItems(listItem)
+  localStorage.setItem("grocery",JSON.stringify(listItem))
+}
 const handleCheck = (id)=>{
     const listItem =items.map((item)=> item.id === id ? {...item,checked :!item.checked}:item)
     setItems(listItem)
@@ -31,9 +40,20 @@ const handleDelete =(id)=>{
    setItems(listItem)
    localStorage.setItem("grocery",JSON.stringify(listItem))
 }
+const handleSubmit =(e)=>{
+  e.preventDefault()
+  if(!newItem) return;
+ addItem(newItem)
+  setNewItem("")
+}
   return (
     <div className="h-full">
       <Header title="grocery list"/>
+      <AddItem
+        newItem={newItem}
+        setNewItem={setNewItem}
+        handleSubmit={handleSubmit}
+      />
       <Content 
         items={items}
         handleCheck={handleCheck}
