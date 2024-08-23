@@ -8,7 +8,7 @@ const ItemList = ({items,handleCheck,handleDelete}) => {
                     <li className='bg-[#d1d1d1] rounded-lg px-4 py-6 mt-6' key={item.id}>
                         <div className="flex justify-between items-center">
                             <div className="">
-                                <input className='w-5 h-5' type="checkbox" onChange={() => handleCheck(item.id)} checked={item.checked} placeholder='Items List' />
+                                <input className='w-8 h-8' type="checkbox" onChange={() => handleCheck(item.id)} checked={item.checked} placeholder='Items List' />
                                 <label onDoubleClick={() => handleCheck(item.id)} className={`font-light font-moderustic text-xl ml-4 md:ml-8 ${item.checked ? "line-through" : ""}`} htmlFor="">{item.item}</label>
                             </div>
                             <div className="">
