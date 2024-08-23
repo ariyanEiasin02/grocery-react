@@ -65,7 +65,7 @@ function App() {
         setSearch={setSearch}
       />
       <main>
-        {isLoading && <p className='text-red-500 text-center mt-6 text-xl font-light font-moderustic'>Loading Items....</p>}
+        {isLoading && <p className='text-teal-500 text-center mt-6 text-xl font-light font-moderustic'>Loading Items....</p>}
         {fetchError && <p className='text-red-500 text-center mt-6 text-xl font-light font-moderustic'>{`fetchError :${fetchError}`}</p>}
         {
           !fetchError && !isLoading && <Content
